@@ -1,0 +1,8 @@
+name: b2b_emlyon
+dependencies:
+    - python==3.5.2
+    - jupyter
+    - mysql
+    - pip:
+        - WordCloud
+        - mysql-connector-python
