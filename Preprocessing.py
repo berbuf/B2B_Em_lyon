@@ -1,3 +1,8 @@
+
+"""
+preprocessing utility
+"""
+
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from gensim.models import Phrases
@@ -26,6 +31,10 @@ def mark_bigrams(tweets):
     return list(bigram_phraser[tweets])
 
 def preprocessing(company, lang, wordcloud=False):
+    """
+    take company name, language chosen, boolean for saving wordcloud 
+    return meta-data and list of preprocessed tweets
+    """
 
     # get tweets
     tweets = np.array(execute("SELECT * FROM tweet WHERE searchterm = '@" + company + "'"))
