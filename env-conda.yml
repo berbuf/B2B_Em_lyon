@@ -7,3 +7,4 @@ dependencies:
         - WordCloud
         - mysql-connector-python
         - langdetect
+        - gensim
