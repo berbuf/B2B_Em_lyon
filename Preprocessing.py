@@ -45,7 +45,13 @@ def preprocessing(company, lang, wordcloud=False):
     rt_tweets = [ tweet for tweet in tweets if pattern.match(tweet) ]
 
     # only lang tweets
-    lang_tweets = [ tweet for tweet in tweets if detect(tweet) == lang ]
+    lang_tweets = []
+    for tweet in tweets:
+        try:
+            if detect(tweet) == lang:
+                lang_tweets.append(tweet)
+        except:
+            continue
 
     # no urls
     url = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
