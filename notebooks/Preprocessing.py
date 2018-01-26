@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from gensim.models import Phrases
 from gensim.models.phrases import Phraser
 from langdetect import detect
+from TrainBigrams import load_model
 import mysql.connector
 import numpy as np
 import collections
@@ -26,8 +27,7 @@ def execute(sql_query):
 
 def mark_bigrams(tweets):
     """ join bigrams with '_' """ 
-    bigram = Phrases(tweets)
-    bigram_phraser = Phraser(bigram)
+    bigram_phraser = load_model('../models/bigram_model')
     return list(bigram_phraser[tweets])
 
 def preprocessing(company, lang, wordcloud=False):
@@ -100,6 +100,6 @@ def preprocessing(company, lang, wordcloud=False):
     # * nb tweet in chosen language
     # * nb words
     # * nb unique words
-    data = (company, len(tweets), len(rt_tweets), lang, len(lang_tweets), len(flat_text_bigrams), len(frequ), filtered_tweets)
+    data = (company, len(tweets), len(rt_tweets), lang, len(lang_tweets), len(flat_text_bigrams), len(frequ), bigrams)
 
     return data
