@@ -17,6 +17,8 @@ def get_tw(name, list_tw):
     """ get real tweets from preprocssed tweets """
     global COMPANY
     global TWEETS
+    if not isinstance(list_tw[0], list):
+        list_tw = [list_tw]
     if name != COMPANY:
         COMPANY = name
         request = "SELECT * FROM tweet WHERE searchterm = '@" + COMPANY + "'"
