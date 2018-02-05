@@ -8,5 +8,5 @@ dependencies:
         - mysql-connector-python
         - langdetect
         - gensim
-       	- google-compute-engine
         - pandas
+        - networkx
