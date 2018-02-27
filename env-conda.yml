@@ -11,3 +11,4 @@ dependencies:
         - pandas
         - pyLDAvis
         - networkx
+        - textblob

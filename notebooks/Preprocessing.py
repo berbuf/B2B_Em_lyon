@@ -103,7 +103,7 @@ def preprocessing(company, lang):
 
     return data
 
-def fast_preprocessing(company, lang, no_arobas=True):
+def fast_preprocessing(company, lang, no_arobas=True, no_rt=True):
     """
     take company name, language chosen, id by language list
     fast preprocessing using prebuild lang_ids
@@ -118,8 +118,11 @@ def fast_preprocessing(company, lang, no_arobas=True):
     lang_tweets = [ (elem[0], tweets[elem[0]]) for elem in lang_id if elem[1] == lang ]
 
     # remove retweets
-    pattern = re.compile("^RT ")
-    no_rt_tweets = [ (i, tweet) for i, tweet in lang_tweets if not pattern.match(tweet) ]
+    if no_rt:
+        pattern = re.compile("^RT ")
+        no_rt_tweets = [ (i, tweet) for i, tweet in lang_tweets if not pattern.match(tweet) ]
+    else:
+        no_rt_tweets = lang_tweets
 
     # no urls
     url = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
